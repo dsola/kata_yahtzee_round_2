@@ -31,17 +31,6 @@ class Category
     }
 
     /**
-     * @param array $dice
-     * @return int
-     */
-    public function calculateScore($dice)
-    {
-        return count(array_filter($dice, function ($die) {
-            return $die == $this->value;
-        }));
-    }
-
-    /**
      * @return Category
      */
     public static function all()

@@ -35,7 +35,8 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
         $diceRoller = new DiceRoller($dieRoller);
         $reRuns = new ReRuns($userInterface, $diceRoller);
         $categorySelector = new CategorySelector($inputUserInterface, $outputUserInterface);
-        $gameRunner = new GameRunner($userInterface, $diceRoller, $reRuns, $categorySelector);
+        $categoryScore = new CategoryScore($outputUserInterface);
+        $gameRunner = new GameRunner($userInterface, $diceRoller, $reRuns, $categorySelector,$categoryScore);
         $yahtzee = new Yahtzee($gameRunner, $outputUserInterface);
 
         $yahtzee->play();
@@ -69,6 +70,12 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
             "Available categories:",
             "[3] Threes",
             "Category to add points to: 3",
+
+            "Yahtzee score",
+            "Ones: 4",
+            "Twos: 3",
+            "Threes: 2",
+            "Final score: 9"
         ];
 
         $this->assertEquals($outputLines, $outputUserInterface->output);

@@ -19,19 +19,25 @@ class GameRunner
      * @var CategorySelector
      */
     private $categorySelector;
+    /**
+     * @var CategoryScore
+     */
+    private $categoryScore;
 
     /**
      * @param UserInterface $userInterface
      * @param DiceRoller $diceRoller
      * @param ReRuns $reRuns
      * @param CategorySelector $categorySelector
+     * @param CategoryScore $categoryScore
      */
-    public function __construct(UserInterface $userInterface, DiceRoller $diceRoller, ReRuns $reRuns, CategorySelector $categorySelector)
+    public function __construct(UserInterface $userInterface, DiceRoller $diceRoller, ReRuns $reRuns, CategorySelector $categorySelector, CategoryScore $categoryScore)
     {
         $this->userInterface = $userInterface;
         $this->diceRoller = $diceRoller;
         $this->reRuns = $reRuns;
         $this->categorySelector = $categorySelector;
+        $this->categoryScore = $categoryScore;
     }
 
     /**
@@ -41,22 +47,22 @@ class GameRunner
     {
         $categories = Category::all();
         $attempts = count($categories);
+
         for($i = 0; $i < $attempts; $i++)
         {
             $this->diceRoller->rollAll();
             $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
             $this->reRuns->doReRuns($numReRuns);
             $this->userInterface->printAvailableCategories($categories);
-            $this->categorySelector->chooseCategory($categories);
+            $category = $this->categorySelector->chooseCategory($categories);
+            $this->categoryScore->saveCategoryScore($this->diceRoller->lastRollResult(), $category);
         }
 
-        /*
-        foreach (Category::all() as $category) {
-            $this->diceRoller->rollAll();
-            $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
-            $this->reRuns->doReRuns($numReRuns);
-            $this->userInterface->printCategoryScore($category, $category->calculateScore($this->diceRoller->lastRollResult()));
+        $this->userInterface->printYahtzeeScoreLine();
+        foreach(Category::all() as $category)
+        {
+            $this->userInterface->printCategoryScore($category, $this->categoryScore->getCategoryScore($category));
         }
-        */
+        $this->userInterface->printFinalScore($this->categoryScore->getFinalScore());
     }
 }

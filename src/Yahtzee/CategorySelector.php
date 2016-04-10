@@ -26,6 +26,7 @@ class CategorySelector
         $category = $this->inputUserInterface->readCategory();
         $this->printChosenCategory($category);
         $this->deleteFromCategories($categories, $category);
+        return $category;
     }
 
     private function printChosenCategory($category)

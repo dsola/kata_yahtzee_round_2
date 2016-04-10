@@ -57,7 +57,7 @@ class InputOutputUserInterface implements UserInterface
      */
     public function printCategoryScore($category, $categoryScore)
     {
-        $this->output->printLine(sprintf("Category %s score: %s", $category, $categoryScore));
+        $this->output->printLine(sprintf("%s: %s", $category, $categoryScore));
     }
 
     /**
@@ -90,6 +90,16 @@ class InputOutputUserInterface implements UserInterface
     private function printAvailableCategoriesLine()
     {
         $this->output->printLine(sprintf("Available categories:"));
+    }
+
+    public function printYahtzeeScoreLine()
+    {
+        $this->output->printLine(sprintf("Yahtzee score"));
+    }
+
+    public function printFinalScore($score)
+    {
+        $this->output->printLine("Final score: " . $score);
     }
 
     /**

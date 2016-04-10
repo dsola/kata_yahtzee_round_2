@@ -26,4 +26,8 @@ interface UserInterface
      * @return array
      */
     function requestDiceToReRun($reRunAttempt);
+
+    function printYahtzeeScoreLine();
+
+    function printFinalScore($score);
 }
