@@ -8,19 +8,19 @@ class Yahtzee
 {
     const RERUN_ATTEMPTS = 2;
 
-    /** @var Categories */
+    /** @var GameRunner */
     private $categories;
 
     /** @var OutputUserInterface */
     private $outputUserInterface;
 
     /**
-     * @param Categories $categories
+     * @param GameRunner $gameRunner
      * @param OutputUserInterface $outputUserInterface
      */
-    public function __construct(Categories $categories, OutputUserInterface $outputUserInterface)
+    public function __construct(GameRunner $gameRunner, OutputUserInterface $outputUserInterface)
     {
-        $this->categories = $categories;
+        $this->categories = $gameRunner;
         $this->outputUserInterface = $outputUserInterface;
     }
     

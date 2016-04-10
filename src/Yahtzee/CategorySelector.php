@@ -20,7 +20,7 @@ class CategorySelector
         $this->outputUserInterface = $outputUserInterface;
     }
 
-    public function readChosenCategory()
+    public function chooseCategory()
     {
         $this->outputUserInterface->printInline('Category to add points to: ', true);
         $category = $this->inputUserInterface->readCategory();

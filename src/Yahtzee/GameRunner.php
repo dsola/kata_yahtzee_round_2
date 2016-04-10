@@ -4,7 +4,7 @@
 namespace Yahtzee;
 
 
-class Categories
+class GameRunner
 {
     /** @var UserInterface */
     private $userInterface;
@@ -14,6 +14,7 @@ class Categories
 
     /** @var ReRuns */
     private $reRuns;
+
     /**
      * @var CategorySelector
      */
@@ -38,11 +39,16 @@ class Categories
      */
     public function play($numReRuns)
     {
-        $this->diceRoller->rollAll();
-        $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
-        $this->reRuns->doReRuns($numReRuns);
-        $this->userInterface->printAvailableCategories(Category::all());
-        $this->categorySelector->readChosenCategory();
+        $categories = Category::all();
+
+        for($i = 0; $i < count($categories); $i++)
+        {
+            $this->diceRoller->rollAll();
+            $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
+            $this->reRuns->doReRuns($numReRuns);
+            $this->userInterface->printAvailableCategories($categories);
+            $this->categorySelector->chooseCategory();
+        }
 
         /*
         foreach (Category::all() as $category) {
