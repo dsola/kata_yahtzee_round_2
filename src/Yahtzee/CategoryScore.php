@@ -4,11 +4,7 @@ namespace Yahtzee;
 
 class CategoryScore
 {
-    private $categoryScores = [
-        1 => 0,
-        2 => 0,
-        3 => 0
-    ];
+    private $categoryScores = [];
 
     /**
      * @var OutputUserInterface
@@ -18,6 +14,10 @@ class CategoryScore
     public function __construct(OutputUserInterface $outputUserInterface)
     {
         $this->outputUserInterface = $outputUserInterface;
+        foreach(Category::all() as $category)
+        {
+            $this->categoryScores[$category->getValue()] = 0;
+        }
     }
 
     /**
