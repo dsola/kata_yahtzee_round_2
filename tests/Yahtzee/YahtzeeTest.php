@@ -57,7 +57,6 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
             "[2] Dice to re-run:",
             "Dice: D1:2 D2:4 D3:2 D4:2 D5:5",
             "Available categories:",
-            "[1] Ones",
             "[2] Twos",
             "[3] Threes",
             "Category to add points to: 2",
@@ -68,8 +67,6 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
             "[2] Dice to re-run:",
             "Dice: D1:6 D2:2 D3:3 D4:4 D5:3",
             "Available categories:",
-            "[1] Ones",
-            "[2] Twos",
             "[3] Threes",
             "Category to add points to: 3",
         ];

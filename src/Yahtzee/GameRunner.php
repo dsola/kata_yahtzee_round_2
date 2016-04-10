@@ -40,14 +40,14 @@ class GameRunner
     public function play($numReRuns)
     {
         $categories = Category::all();
-
-        for($i = 0; $i < count($categories); $i++)
+        $attempts = count($categories);
+        for($i = 0; $i < $attempts; $i++)
         {
             $this->diceRoller->rollAll();
             $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
             $this->reRuns->doReRuns($numReRuns);
             $this->userInterface->printAvailableCategories($categories);
-            $this->categorySelector->chooseCategory();
+            $this->categorySelector->chooseCategory($categories);
         }
 
         /*
