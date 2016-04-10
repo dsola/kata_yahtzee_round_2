@@ -27,6 +27,5 @@ class Yahtzee
     public function play() {
 
         $this->categories->play(self::RERUN_ATTEMPTS);
-        $this->outputUserInterface->printLine("Yahtzee score");
     }
 }
