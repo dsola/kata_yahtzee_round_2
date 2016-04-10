@@ -35,7 +35,7 @@ class Categories
         $this->diceRoller->rollAll();
         $this->userInterface->printDiceLine($this->diceRoller->lastRollResult());
         $this->reRuns->doReRuns($numReRuns);
-        $this->userInterface->printAvaliableCategories();
+        $this->userInterface->printAvailableCategories(Category::all());
         /*
         foreach (Category::all() as $category) {
             $this->diceRoller->rollAll();

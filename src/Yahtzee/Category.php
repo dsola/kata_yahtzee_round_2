@@ -52,4 +52,9 @@ class Category
             new self('Threes', 3)
         ];
     }
+
+    public function getValue()
+    {
+        return $this->value;
+    }
 }

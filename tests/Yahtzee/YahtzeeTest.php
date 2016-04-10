@@ -41,8 +41,12 @@ class YahtzeeTest extends \PHPUnit_Framework_TestCase
             "Dice: D1:1 D2:5 D3:1 D4:2 D5:1",
             "[2] Dice to re-run:",
             "Dice: D1:1 D2:1 D3:1 D4:5 D5:1",
-            "Available categories:"
+            "Available categories:",
+            "[1] Ones",
+            "[2] Twos",
+            "[3] Threes"
         ];
+
         $this->assertEquals($outputLines, $outputUserInterface->output);
     }
 }

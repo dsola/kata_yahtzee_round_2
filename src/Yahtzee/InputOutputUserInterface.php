@@ -31,11 +31,15 @@ class InputOutputUserInterface implements UserInterface
     }
 
     /**
-     *
+     * @param $categories
      */
-    public function printAvaliableCategories()
+    public function printAvailableCategories($categories)
     {
-        $this->output->printLine(sprintf("Available categories:"));
+       $this->printAvailableCategoriesLine();
+        foreach($categories as $category)
+        {
+            $this->printCategoryAvailable($category);
+        }
     }
 
     /**
@@ -81,6 +85,16 @@ class InputOutputUserInterface implements UserInterface
     private function printReRunAttempt($reRunAttempt)
     {
         $this->output->printLine(sprintf("[%s] Dice to re-run:", $reRunAttempt));
+    }
+
+    private function printAvailableCategoriesLine()
+    {
+        $this->output->printLine(sprintf("Available categories:"));
+    }
+
+    private function printCategoryAvailable(Category $category)
+    {
+        $this->output->printLine(sprintf("[%s] %s", $category->getValue(), $category));
     }
 
 }
