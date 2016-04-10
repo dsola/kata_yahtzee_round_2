@@ -16,4 +16,15 @@ class FakeOutputUserInterface implements OutputUserInterface
     {
         $this->output[] = $line;
     }
+
+    /**
+     * @param $line
+     * @param int $new
+     * @return mixed|void
+     */
+    public function printInline($line, $new = false)
+    {
+        if ($new) $this->output[] = $line;
+        else $this->output[count($this->output) -1] .= $line;
+    }
 }

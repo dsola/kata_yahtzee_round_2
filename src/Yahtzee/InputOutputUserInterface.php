@@ -92,6 +92,9 @@ class InputOutputUserInterface implements UserInterface
         $this->output->printLine(sprintf("Available categories:"));
     }
 
+    /**
+     * @param Category $category
+     */
     private function printCategoryAvailable(Category $category)
     {
         $this->output->printLine(sprintf("[%s] %s", $category->getValue(), $category));

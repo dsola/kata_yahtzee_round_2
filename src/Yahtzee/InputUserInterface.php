@@ -3,5 +3,7 @@ namespace Yahtzee;
 
 interface InputUserInterface
 {
-    function readDiceToRerun();
+    public function readDiceToRerun();
+
+    public function readCategory();
 }
