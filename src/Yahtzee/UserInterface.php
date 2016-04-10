@@ -8,6 +8,8 @@ interface UserInterface
      */
     function printCategory($category);
 
+    function printAvaliableCategories();
+
     /**
      * @param array $dice
      */

@@ -31,6 +31,14 @@ class InputOutputUserInterface implements UserInterface
     }
 
     /**
+     *
+     */
+    public function printAvaliableCategories()
+    {
+        $this->output->printLine(sprintf("Available categories:"));
+    }
+
+    /**
      * @param array $dice
      */
     public function printDiceLine($dice)
